@@ -29,14 +29,6 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/profile", name="user_profile")
-     */
-    public function index(UserRepository $userRepository): Response
-    {
-        return $this->render('security/profile.html.twig', ['user' => $this->getUser()]);
-    }
-
-    /**
      * @Route("/logout", name="app_logout")
      */
     public function logout()
