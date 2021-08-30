@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,9 +31,9 @@ class SecurityController extends AbstractController
     /**
      * @Route("/profile", name="user_profile")
      */
-    public function index(): Response
+    public function index(UserRepository $userRepository): Response
     {
-        return $this->render('security/profile.html.twig');
+        return $this->render('security/profile.html.twig', ['user' => $this->getUser()]);
     }
 
     /**

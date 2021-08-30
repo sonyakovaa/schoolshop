@@ -1,7 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'security/base_profile.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %} Profile {% endblock %}
 
-{% block body %}
-    <h1>Product index</h1>
+{% block contentTitle %}
+    <h1>Hi! This is your profile in the store.</h1>
+{% endblock %}
+{% block content %}
+    <div class="row g-0">
+        <div class="col-md-9">
+                <ul class="list-group">
+                    <li class="list-group-item"><b>Email: {{ user.email }}</b></li>
+                </ul>
+        </div>
+    </div>
 {% endblock %}
