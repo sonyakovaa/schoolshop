@@ -13,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Order
 {
+    const STATUS_CART = 'cart';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -34,6 +36,11 @@ class Order
      * @ORM\ManyToOne(targetEntity=User::class)
      */
     private $userOrder;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $status = self::STATUS_CART;
 
     public function __construct()
     {
@@ -109,6 +116,18 @@ class Order
     public function setUserOrder(?User $userOrder): self
     {
         $this->userOrder = $userOrder;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }

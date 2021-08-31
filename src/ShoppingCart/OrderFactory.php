@@ -12,7 +12,9 @@ class OrderFactory
     public function create(): Order
     {
         $order = new Order();
-        $order->setCreatedAt(new \DateTime());
+        $order
+            ->setStatus(Order::STATUS_CART)
+            ->setCreatedAt(new \DateTime());
 
         return $order;
     }

@@ -57,16 +57,13 @@ class ProductController extends AbstractController
     public function show(Product $product, Request $request, CartManager $cartManager): Response
     {
         $form = $this->createForm(AddToCartFormType::class);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $item = $form->getData();
             $item->setProduct($product);
-
             $cart = $cartManager->getCurrentCart();
             $cart->addItem($item);
-
             $cartManager->save($cart);
 
             return $this->redirectToRoute('product_show', ['id' => $product->getId()]);
