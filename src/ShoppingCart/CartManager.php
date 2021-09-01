@@ -11,11 +11,11 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class CartManager
 {
-    private $cartSessionStorage;
+    private \App\ShoppingCart\CartSessionStorage $cartSessionStorage;
 
-    private $cartFactory;
+    private \App\ShoppingCart\OrderFactory $cartFactory;
 
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
 
     public function __construct(

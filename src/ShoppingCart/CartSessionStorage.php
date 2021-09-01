@@ -9,9 +9,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartSessionStorage
 {
-    private $session;
+    private SessionInterface $session;
 
-    private $cartRepository;
+    private OrderRepository $cartRepository;
 
     const CART_KEY_NAME = 'cart_id';
 
