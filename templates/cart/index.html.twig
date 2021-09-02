@@ -53,9 +53,7 @@
                             </li>
                         </ul>
                         <div class="card-body">
-                            {{ form_start(form) }}
-                            {{ form_widget(form.placeAnOrder, {'attr': {'class': 'btn btn-warning w-25'}}) }}
-                            {{ form_end(form) }}
+                            <a href="{{ path('order') }}" class="btn btn-warning w-100">Place an order</a>
                         </div>
                     </div>
                 </div>

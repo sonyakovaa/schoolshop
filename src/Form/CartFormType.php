@@ -19,8 +19,7 @@ class CartFormType extends AbstractType
         $builder
             ->add('items', CollectionType::class, [
                 'entry_type' => CartItemFormType::class,
-            ])
-            ->add('placeAnOrder', SubmitType::class);
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

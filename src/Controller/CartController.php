@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Form\CartFormType;
-use App\Entity\User;
+use App\Entity\Order;
 use App\ShoppingCart\CartManager;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +21,7 @@ class CartController extends AbstractController
     {
         $cart = $cartManager->getCurrentCart();
         $form = $this->createForm(CartFormType::class, $cart);
-        // $form->handleRequest($request);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $cart->setCreatedAt(new DateTime());

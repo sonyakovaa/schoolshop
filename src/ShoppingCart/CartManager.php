@@ -39,6 +39,11 @@ class CartManager
         return $cart;
     }
 
+    public function getOrder(): Order
+    {
+        return $this->cartSessionStorage->getCart();
+    }
+
     public function save(Order $cart): void
     {
         $this->entityManager->persist($cart);
