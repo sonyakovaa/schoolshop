@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-class OrderHistoryController
+class CompletedOrderController
 {
 
 }

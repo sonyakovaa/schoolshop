@@ -33,14 +33,14 @@ class Order
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class)
-     */
-    private $userOrder;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $status = self::STATUS_CART;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
+     */
+    private $userOrder;
 
     public function __construct()
     {
@@ -108,18 +108,6 @@ class Order
         return $total;
     }
 
-    public function getUserOrder(): ?User
-    {
-        return $this->userOrder;
-    }
-
-    public function setUserOrder(?User $userOrder): self
-    {
-        $this->userOrder = $userOrder;
-
-        return $this;
-    }
-
     public function getStatus(): ?string
     {
         return $this->status;
@@ -128,6 +116,18 @@ class Order
     public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getUserOrder(): ?User
+    {
+        return $this->userOrder;
+    }
+
+    public function setUserOrder(?User $userOrder): self
+    {
+        $this->userOrder = $userOrder;
 
         return $this;
     }

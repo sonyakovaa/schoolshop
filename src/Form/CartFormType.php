@@ -4,6 +4,7 @@
 namespace App\Form;
 
 use App\Entity\Order;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -14,12 +15,12 @@ class CartFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $cartItem = new CartItemFormType();
         $builder
             ->add('items', CollectionType::class, [
-                'entry_type' => CartItemFormType::class
+                'entry_type' => CartItemFormType::class,
             ])
-            ->add('save', SubmitType::class)
-            ->add('clear', SubmitType::class);
+            ->add('placeAnOrder', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)
